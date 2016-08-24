@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form id="loginForm" action="./test.html">
+    <div>
+        username:
+        <input type="text" name="username" />
+    </div>
+    <div>
+        password:
+        <input type="password" name="password" />
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>
+<script src="../lib/jquery.min.js"></script>
+<script src="../src/jquery.validator.js"></script>
+<script>
+    $("#loginForm").validate({
+        debug: true,
+        errorElement: "em",
+        errorPlacement: function($err, $elem) {
+            $elem.after($err);
+        },
+        success: "success",
+        rules: {
+            "username": {
+                required: true
+                //digits: !0
+            },
+            "password": {
+                required: true
+            }
+        },
+        messages: {
+            "username": {
+                required: "请输入用户名"
+            },
+            "password": {
+                required: "请输入密码"
+            }
+        },
+        submitHandler: function(form) {
+            form.submit()
+        }
+    });
+</script>
+</body>
+</html>
